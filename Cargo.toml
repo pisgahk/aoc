@@ -1,0 +1,8 @@
+[workspace]
+members = ["aoc-lib", "y2020", "y2021", "y2024"]   # we'll add y20XX as we create them
+resolver = "2"
+
+[workspace.dependencies]
+# pin shared deps here so all year crates use the same versions
+itertools = "0.13"
+regex = "1"

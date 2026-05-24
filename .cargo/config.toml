@@ -1,0 +1,9 @@
+[alias]
+# cargo scaffold 2024 1
+scaffold = "run --manifest-path tools/scaffold/Cargo.toml --"
+
+# cargo solve 2024 01
+solve = "run --release --bin"
+
+# cargo aoc-test 2024
+aoc-test = "test -p"

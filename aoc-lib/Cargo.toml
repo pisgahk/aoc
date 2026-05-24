@@ -1,0 +1,9 @@
+# This is your shared utilities crate — grid helpers, parsing, math, etc. Grows over time.
+
+[package]
+name = "aoc-lib"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+itertools = { workspace = true }
