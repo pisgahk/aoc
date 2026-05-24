@@ -19,6 +19,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aoc-y2020"
+version = "0.1.0"
+dependencies = [
+ "aoc-lib",
+ "itertools",
+ "regex",
+]
+
+[[package]]
+name = "aoc-y2021"
+version = "0.1.0"
+
+[[package]]
+name = "aoc-y2024"
+version = "0.1.0"
+dependencies = [
+ "aoc-lib",
+ "itertools",
+ "regex",
+]
+
+[[package]]
 name = "either"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -67,25 +89,3 @@ name = "regex-syntax"
 version = "0.8.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc897dd8d9e8bd1ed8cdad82b5966c3e0ecae09fb1907d58efaa013543185d0a"
-
-[[package]]
-name = "y2020"
-version = "0.1.0"
-dependencies = [
- "aoc-lib",
- "itertools",
- "regex",
-]
-
-[[package]]
-name = "y2021"
-version = "0.1.0"
-
-[[package]]
-name = "y2024"
-version = "0.1.0"
-dependencies = [
- "aoc-lib",
- "itertools",
- "regex",
-]

@@ -1,5 +1,5 @@
 [package]
-name = "y2024"
+name = "aoc-y2024"
 version = "0.1.0"
 edition = "2024"
 

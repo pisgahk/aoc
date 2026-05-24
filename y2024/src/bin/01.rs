@@ -2,7 +2,30 @@ const YEAR: u32 = 2024;
 const DAY: u8 = 1;
 
 fn part_one(input: &str) -> Option<String> {
-    None
+    let _test_input = "3 4\n4 3\n2 5\n1 3\n3 9\n3 3";
+
+    let (mut lhs, mut rhs) = (Vec::new(), Vec::new());
+
+    for line in input.lines(){
+        let num = line
+            .split_whitespace()
+            .filter_map(|n| n.parse().ok())
+            .collect::<Vec<u32>>();
+
+        lhs.push(num[0]);
+        rhs.push(num[1]);
+    }
+
+    lhs.sort();
+    rhs.sort();
+
+    let summation:u32 = lhs.iter().zip(rhs.iter())
+        .map(|(a,b)| a.abs_diff(*b))
+        .sum();
+
+    Some(summation.to_string())
+
+
 }
 
 fn part_two(input: &str) -> Option<String> {

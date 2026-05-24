@@ -4,6 +4,8 @@ Basically it was built by Claude, though here are the steps:
 
 Let's build it out step by step. I'll walk you through the full setup — workspace, shared lib, first year crate, and the tooling to tie it all together.
 
+Download `aoc-cli` from `cargo install aoc-cli`
+
 ---
 
 ## Step 1 — Create the workspace root
@@ -283,6 +285,11 @@ aoc-download() {
   local padded=$(printf "%02d" $day)
   local base=~/dev/aoc/data/$year
   mkdir -p "$base"/{inputs,examples,puzzles}
+
+  # remove existing files so aoc-cli can overwrite
+  rm -f "$base/inputs/$padded.txt"
+  rm -f "$base/puzzles/$padded.md"
+
   aoc download -y "$year" -d "$day" \
     --input-file  "$base/inputs/$padded.txt" \
     --puzzle-file "$base/puzzles/$padded.md"
@@ -323,6 +330,27 @@ aoc-scaffold() {
   sed "s/{YEAR}/$year/g; s/{DAY}/$day/g" "$template" > "$dest"
   echo "✓ Created $dest"
 }
+
+aoc-submit() {
+	local year=$1
+	local day=$2
+	local part=$3
+	local padded=$(printf "%02d" $day)
+
+	echo "Running solution..."
+	local answer=$(cargo run -p "aoc-y$year" --bin "$padded" --release -q 2>/dev/null |
+		grep "Part $part:" |
+		awk '{print $3}')
+
+	if [ -z "$answer" ]; then
+		echo "✗ Could not extract Part $part answer"
+		return 1
+	fi
+
+	echo "Submitting Part $part: $answer"
+	aoc submit --year "$year" --day "$day" "$part" "$answer"
+}
+
 ```
 
 ---
@@ -362,5 +390,14 @@ aoc-download 2024 1     # fetch input + puzzle md
 aoc-scaffold 2024 1     # generate y2024/src/bin/01.rs
 # ... write logic in part_one / part_two ...
 aoc-solve 2024 1        # run it
-aoc submit -y 2024 -d 1 -p 1 <answer>
+<!-- aoc submit -y 2024 -d 1 -p 1 <answer> -->
+
+# Submit part 1
+aoc-submit 2024 1 1   # solve and submit part 1
+
+# Then download the updated ../puzzles/01.md
+aoc-download 2024 1
+
+# Submit part 2
+aoc-submit 2024 1 2   # solve and submit part 2
 ```
