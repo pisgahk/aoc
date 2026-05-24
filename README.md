@@ -390,7 +390,6 @@ aoc-download 2024 1     # fetch input + puzzle md
 aoc-scaffold 2024 1     # generate y2024/src/bin/01.rs
 # ... write logic in part_one / part_two ...
 aoc-solve 2024 1        # run it
-<!-- aoc submit -y 2024 -d 1 -p 1 <answer> -->
 
 # Submit part 1
 aoc-submit 2024 1 1   # solve and submit part 1
