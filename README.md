@@ -146,78 +146,6 @@ members = ["aoc-lib", "y2020"]
 
 ## Step 5 — Day file template
 
-**`y2020/src/bin/01.rs`:**
-
-```rust
-use aoc_lib::parsing::lines;
-
-const YEAR: u32 = 2020;
-const DAY: u8 = 1;
-
-fn part_one(input: &str) -> Option<i64> {
-    None // your solution here
-}
-
-fn part_two(input: &str) -> Option<i64> {
-    None
-}
-
-fn main() {
-    let input = aoc_lib::input::read(YEAR, DAY);
-
-    let t = std::time::Instant::now();
-    println!("Part 1: {:?}  ({:.2?})", part_one(&input), t.elapsed());
-
-    let t = std::time::Instant::now();
-    println!("Part 2: {:?}  ({:.2?})", part_two(&input), t.elapsed());
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_part_one() {
-        let input = aoc_lib::input::read_example(YEAR, DAY);
-        assert_eq!(part_one(&input), None); // replace None with expected
-    }
-
-    #[test]
-    fn test_part_two() {
-        let input = aoc_lib::input::read_example(YEAR, DAY);
-        assert_eq!(part_two(&input), None);
-    }
-}
-```
-
----
-
-## Step 6 — `.cargo/config.toml` aliases
-
-```bash
-mkdir -p .cargo
-```
-
-**`.cargo/config.toml`:**
-
-```toml
-[alias]
-# cargo scaffold 2024 1
-scaffold = "run --manifest-path tools/scaffold/Cargo.toml --"
-
-# cargo solve 2024 01
-solve = "run --release --bin"
-
-# cargo aoc-test 2024
-aoc-test = "test -p"
-```
-
-The `solve` alias is a bit limited since it needs `-p` too — the shell function below is cleaner.
-
----
-
-## Step 7 — Shell functions
-
 Save this as tools/scaffold/template.rs (the file it copies for each new day):
 
 ```rust
@@ -265,6 +193,78 @@ mod tests {
     }
 }
 ```
+
+<!-- **`y2020/src/bin/01.rs`:** -->
+<!---->
+<!-- ```rust -->
+<!-- use aoc_lib::parsing::lines; -->
+<!---->
+<!-- const YEAR: u32 = 2020; -->
+<!-- const DAY: u8 = 1; -->
+<!---->
+<!-- fn part_one(input: &str) -> Option<i64> { -->
+<!--     None // your solution here -->
+<!-- } -->
+<!---->
+<!-- fn part_two(input: &str) -> Option<i64> { -->
+<!--     None -->
+<!-- } -->
+<!---->
+<!-- fn main() { -->
+<!--     let input = aoc_lib::input::read(YEAR, DAY); -->
+<!---->
+<!--     let t = std::time::Instant::now(); -->
+<!--     println!("Part 1: {:?}  ({:.2?})", part_one(&input), t.elapsed()); -->
+<!---->
+<!--     let t = std::time::Instant::now(); -->
+<!--     println!("Part 2: {:?}  ({:.2?})", part_two(&input), t.elapsed()); -->
+<!-- } -->
+<!---->
+<!-- #[cfg(test)] -->
+<!-- mod tests { -->
+<!--     use super::*; -->
+<!---->
+<!--     #[test] -->
+<!--     fn test_part_one() { -->
+<!--         let input = aoc_lib::input::read_example(YEAR, DAY); -->
+<!--         assert_eq!(part_one(&input), None); // replace None with expected -->
+<!--     } -->
+<!---->
+<!--     #[test] -->
+<!--     fn test_part_two() { -->
+<!--         let input = aoc_lib::input::read_example(YEAR, DAY); -->
+<!--         assert_eq!(part_two(&input), None); -->
+<!--     } -->
+<!-- } -->
+<!-- ``` -->
+
+## <!---->
+
+## Step 6 — `.cargo/config.toml` aliases
+
+```bash
+mkdir -p .cargo
+```
+
+**`.cargo/config.toml`:**
+
+```toml
+[alias]
+# cargo scaffold 2024 1
+scaffold = "run --manifest-path tools/scaffold/Cargo.toml --"
+
+# cargo solve 2024 01
+solve = "run --release --bin"
+
+# cargo aoc-test 2024
+aoc-test = "test -p"
+```
+
+The `solve` alias is a bit limited since it needs `-p` too — the shell function below is cleaner.
+
+---
+
+## Step 7 — Shell functions
 
 Add to your shell config (`~/.bashrc`, `~/.zshrc`, or your functions file):
 
@@ -364,4 +364,3 @@ aoc-scaffold 2024 1     # generate y2024/src/bin/01.rs
 aoc-solve 2024 1        # run it
 aoc submit -y 2024 -d 1 -p 1 <answer>
 ```
-
