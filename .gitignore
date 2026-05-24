@@ -1,0 +1,36 @@
+# Rust build artifacts
+/target/
+**/target/
+
+# Cargo lock (keep this for binaries/workspaces)
+# Cargo.lock  ← do NOT ignore this, commit it
+
+# Puzzle inputs - AoC asks you not to share these publicly
+data/*/inputs/
+data/*/puzzles/
+
+# Example inputs are fine to commit (you type these in yourself from the problem page)
+!data/*/examples/
+
+# Session cookie - never commit this
+.adventofcode.session
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Neovim
+*.swp
+.nvimrc.lua
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DHAT profiling output (from cargo solve --dhat)
+dhat-heap.json
+
+# Benchmark/timing artifacts
+*.bench
